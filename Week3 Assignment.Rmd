@@ -1,0 +1,52 @@
+---
+title: "Week 3 Assignment Data 605"
+author: "Tyler Baker"
+date: "2/11/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(pracma)
+```
+
+# Week 3 Assignment
+
+## Problem set 1
+
+1) What is the rank of matrix A?
+
+By turning matrix A into rref, one can simply count the number of pivots to find the rank.
+```{r rank of A}
+a <- matrix(c(1,-1,0,5,2,0,1,4,3,1,-2,-2,4,3,1,-3), nrow=4,ncol=4, byrow=FALSE)
+rref_a <- rref(a)
+print(rref_a)
+```
+Thus, the rank of matrix A is 4.
+
+2) Given an mxn matrix where m>n, what can be the maximum rank? The minimum rank, assuming the matrix is non-zero?
+
+The rank of A = the rank of A transpose.
+Let's examine a matrix where the amount of columns is larger than the amount of rows.
+```{r}
+example_mat <- matrix(c(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0), nrow=4, ncol=5, byrow=FALSE)
+print(example_mat)
+```
+Here, example_mat is already in rref. We clearly see that there are only 4 pivots. Thus, we know that its rank is equal to 4. Thus, in general we say that given an mxn matrix, the maximum possible rank is equal to the smaller value of m and n.
+The minimum rank of a non-zero matrix is 1. The rank of a matrix is the count of linearly independent vectors of a matrix. A non-zero matrix must carry some information to at the very least give us a line. Thus, the minimum rank is again 1.
+
+3)What is the rank of B?
+```{r}
+b<- matrix(c(1,3,2,2,6,4,1,3,2), nrow=3, ncol=3, byrow=FALSE)
+rref_b <- rref(b)
+print(rref_b)
+```
+This shows that the rank of B is 1. Similarly, we can get the same answer by studying the rows of matrix B. We see that row2 is equal to row1 x 3. 
+Similarly, row3 is equal to row1 x 2. Thus, row2 and row3 are linear dependent on row1. The same method can similarly be done by examining the columns of B. 
+
+## Problem set 2
+
+The solution to problem set 2 can be seen at the link below.
+
+https://github.com/tylerbaker01/Data-605-Week-3-Assignment/blob/main/week3ps2.png
+
